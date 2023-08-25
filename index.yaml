@@ -16,6 +16,6 @@ entries:
     - https://github.com/apache/spark
     - https://github.com/lightbend/spark-history-server-docker
     urls:
-    - https://github.com/apinchuk/spark-helm-chart/spark-helm-chart-1.4.3.tgz
+    - https://apinchuk.github.io/spark-helm-chart/spark-helm-chart-1.4.3.tgz
     version: 1.4.3
 generated: "2023-08-25T14:33:18.145239806-07:00"

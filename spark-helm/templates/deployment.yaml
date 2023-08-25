@@ -40,7 +40,7 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         command:
-        - "/opt/bash-5/bash-5.0/bash"
+        - "/bin/sh"
         - "-c"
         - >
           if [ "$enablePVC" == "true" ]; then
