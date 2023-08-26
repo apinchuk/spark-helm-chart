@@ -62,7 +62,6 @@ spec:
               -Dspark.hadoop.fs.s3a.endpoint=$endpoint";
             fi;
             if [ "$enableIAM" = "false" ]; then
-              "echo foo; echo bar" \
               export SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS \
               -Dspark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider \                          
               -Dspark.hadoop.fs.s3a.access.key=$(cat /etc/secrets/${accessKeyName}) \
