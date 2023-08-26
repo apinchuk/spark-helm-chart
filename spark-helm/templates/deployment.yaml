@@ -54,7 +54,6 @@ spec:
               -Dspark.hadoop.google.cloud.auth.service.account.json.keyfile=/etc/secrets/$key";
             fi;
           elif [ "$enableS3" = "true" ]; then
-            "echo foo; echo bar" \
             export SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS \
               -Dspark.history.fs.logDirectory=$logDirectory \
               -Dspark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem";
@@ -63,6 +62,7 @@ spec:
               -Dspark.hadoop.fs.s3a.endpoint=$endpoint";
             fi;
             if [ "$enableIAM" = "false" ]; then
+              "echo foo; echo bar" \
               export SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS \
               -Dspark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider \                          
               -Dspark.hadoop.fs.s3a.access.key=$(cat /etc/secrets/${accessKeyName}) \
@@ -89,7 +89,6 @@ spec:
             export SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS \
             -Dspark.history.fs.logDirectory=$logDirectory";
           fi;
-          "echo test" \
           /opt/spark/bin/spark-class org.apache.spark.deploy.history.HistoryServer;
         envFrom:
         - configMapRef:
