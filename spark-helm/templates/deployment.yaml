@@ -63,9 +63,8 @@ spec:
             fi;
             if [ "$enableIAM" == "false" ]; then
               export SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS \
-              -Dspark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider \                          
               -Dspark.hadoop.fs.s3a.access.key=$(cat /etc/secrets/${accessKeyName}) \
-              -Dspark.hadoop.fs.s3a.secret.key=$(cat /etc/secrets/${secretKeyName})" 
+              -Dspark.hadoop.fs.s3a.secret.key=$(cat /etc/secrets/${secretKeyName})"; 
             fi;
           elif [ "$enableWASBS" == "true" ]; then
             container=$(cat /etc/secrets/${containerKeyName})
@@ -88,7 +87,6 @@ spec:
             export SPARK_HISTORY_OPTS="$SPARK_HISTORY_OPTS \
             -Dspark.history.fs.logDirectory=$logDirectory";
           fi;
-          #/opt/spark/sbin/start-history-server.sh;
           /opt/spark/bin/spark-class org.apache.spark.deploy.history.HistoryServer;
         envFrom:
         - configMapRef:
